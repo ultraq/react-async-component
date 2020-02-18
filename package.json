@@ -1,0 +1,49 @@
+{
+	"name": "react-async-component",
+	"version": "1.0.0",
+	"description": "Load components asynchronously",
+	"author": "Emanuel Rabina <emanuelrabina@gmail.com> (http://www.ultraq.net.nz/)",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ultraq/react-async-component.git"
+	},
+	"module": "AsyncComponent.es.js",
+	"main": "AsyncComponent.cjs.js",
+	"scripts": {
+		"lint": "eslint \"*.js\"",
+		"test": "jest",
+		"build": "npm run build:cjs && npm run build:es",
+		"build:cjs": "cross-env-shell BABEL_ENV=cjs babel AsyncComponent.js --out-file AsyncComponent.cjs.js --source-maps",
+		"build:es": "cross-env-shell BABEL_ENV=es babel AsyncComponent.js --out-file AsyncComponent.es.js --source-maps",
+		"prepublishOnly": "npm run build"
+	},
+	"peerDependencies": {
+		"prop-types": "15",
+		"react": "16"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.8.4",
+		"@babel/core": "^7.8.4",
+		"@babel/plugin-proposal-class-properties": "^7.8.3",
+		"@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+		"@babel/preset-env": "^7.8.4",
+		"@babel/preset-react": "^7.8.3",
+		"babel-eslint": "^10.0.3",
+		"babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+		"cross-env": "^7.0.0",
+		"enzyme": "^3.11.0",
+		"enzyme-adapter-react-16": "^1.15.2",
+		"eslint": "^6.8.0",
+		"eslint-config-ultraq": "^2.2.0",
+		"eslint-plugin-react": "^7.18.3",
+		"jest": "^25.1.0",
+		"prop-types": "^15.7.2",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0",
+		"react-test-renderer": "^16.12.0"
+	},
+	"engines": {
+		"node": ">=10"
+	}
+}
