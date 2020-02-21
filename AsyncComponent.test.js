@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import AsyncComponent from './AsyncComponent';
+import AsyncComponent from './AsyncComponent.js';
 
 import React   from 'react';
 import {mount} from 'enzyme';
@@ -20,7 +20,7 @@ describe('AsyncComponent tests', function() {
 		jest.useRealTimers();
 	});
 
-	test('Eventually loads the configured component', function() {
+	test('Eventually loads the configured component', async function() {
 		const componentPromise = new Promise(resolve => {
 			setTimeout(() => {
 				resolve(SomeComponent);
@@ -31,20 +31,8 @@ describe('AsyncComponent tests', function() {
 		);
 		expect(wrapper.find('#some-component')).toHaveLength(0);
 		jest.runAllTimers();
-		return componentPromise.then(() => {
-			wrapper.update();
-			expect(wrapper.find('#some-component')).toHaveLength(1);
-		});
-	});
-
-	test('Calls configured listener once loaded', function() {
-		const componentPromise = Promise.resolve(SomeComponent);
-		const onComponentLoaded = jest.fn();
-		mount (
-			<AsyncComponent loader={componentPromise} onComponentLoaded={onComponentLoaded}/>
-		);
-		return componentPromise.then(() => {
-			expect(onComponentLoaded).toHaveBeenCalled();
-		});
+		await componentPromise;
+		wrapper.update();
+		expect(wrapper.find('#some-component')).toHaveLength(1);
 	});
 });
