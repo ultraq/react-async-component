@@ -1,6 +1,6 @@
 {
 	"name": "@ultraq/react-async-component",
-	"version": "0.1.1",
+	"version": "1.0.0",
 	"description": "Load components asynchronously",
 	"author": "Emanuel Rabina <emanuelrabina@gmail.com> (http://www.ultraq.net.nz/)",
 	"license": "Apache-2.0",
