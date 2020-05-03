@@ -14,7 +14,7 @@ module.exports = {
 		'html',
 		'text-summary'
 	],
-	setupFiles: [
-		'./jest.setup.js'
+	setupFilesAfterEnv: [
+		'@testing-library/jest-dom'
 	]
 };

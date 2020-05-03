@@ -1,8 +1,8 @@
 /* eslint-env jest */
 import AsyncComponent from './AsyncComponent.js';
 
-import React   from 'react';
-import {mount} from 'enzyme';
+import {render} from '@testing-library/react';
+import React    from 'react';
 
 /**
  * Tests for the async component.
@@ -10,7 +10,7 @@ import {mount} from 'enzyme';
 describe('AsyncComponent tests', function() {
 
 	const SomeComponent = () => (
-		<div id="some-component">Hello!</div>
+		<div>Hello!</div>
 	);
 
 	beforeAll(function() {
@@ -26,13 +26,12 @@ describe('AsyncComponent tests', function() {
 				resolve(SomeComponent);
 			}, 1000);
 		});
-		const wrapper = mount(
+		const {getByText, queryByText} = render(
 			<AsyncComponent loader={componentPromise}/>
 		);
-		expect(wrapper.find('#some-component')).toHaveLength(0);
+		expect(queryByText('Hello!')).toBe(null);
 		jest.runAllTimers();
 		await componentPromise;
-		wrapper.update();
-		expect(wrapper.find('#some-component')).toHaveLength(1);
+		expect(getByText('Hello!')).toBeInTheDocument();
 	});
 });
