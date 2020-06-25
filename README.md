@@ -36,8 +36,8 @@ could look like this:
 
 ### Props
 
-Any props additional props used on `<AsyncComponent/>` and not mentioned below
-are passed along to the component that is loaded.
+Any props used on `<AsyncComponent/>` and not mentioned below are passed along
+to the component that is loaded.
 
  - `children`: optional, a function passed the component (will be `null` until
    the loader has succeeded) and component props for implementors to add any
