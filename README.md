@@ -2,7 +2,7 @@
 react-async-component
 =====================
 
-[![Build Status](https://travis-ci.com/ultraq/react-async-component.svg?branch=master)](https://travis-ci.com/ultraq/react-async-component)
+[![Build Status](https://github.com/ultraq/react-async-component/actions/workflows/build.yml/badge.svg)](https://github.com/ultraq/react-async-component/actions)
 [![npm](https://img.shields.io/npm/v/@ultraq/react-async-component.svg?maxAge=3600)](https://www.npmjs.com/package/@ultraq/react-async-component)
 [![License](https://img.shields.io/github/license/ultraq/react-async-component.svg?maxAge=2592000)](https://github.com/ultraq/react-async-component/blob/master/LICENSE.txt)
 
