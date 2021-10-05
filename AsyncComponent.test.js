@@ -27,7 +27,7 @@ import React            from 'react';
 describe('AsyncComponent tests', function() {
 
 	const SomeComponent = () => (
-		<div id="some-component">Hello!</div>
+		<div>Hello!</div>
 	);
 
 	test('Eventually loads the configured component', async function() {
