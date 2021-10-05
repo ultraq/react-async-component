@@ -17,13 +17,9 @@
 /* eslint-env jest */
 import AsyncComponent from './AsyncComponent.js';
 
-import React              from 'react';
-import {configure, mount} from 'enzyme';
-import Adapter            from 'enzyme-adapter-react-16';
-
-configure({
-	adapter: new Adapter()
-});
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+import React            from 'react';
 
 /**
  * Tests for the async component.
@@ -34,26 +30,23 @@ describe('AsyncComponent tests', function() {
 		<div id="some-component">Hello!</div>
 	);
 
-	beforeAll(function() {
-		jest.useFakeTimers();
-	});
-	afterAll(function() {
-		jest.useRealTimers();
-	});
-
 	test('Eventually loads the configured component', async function() {
+		jest.useFakeTimers();
+
 		const componentPromise = new Promise(resolve => {
 			setTimeout(() => {
 				resolve(SomeComponent);
 			}, 1000);
 		});
-		const wrapper = mount(
+		render(
 			<AsyncComponent loader={componentPromise}/>
 		);
-		expect(wrapper.find('#some-component')).toHaveLength(0);
+
+		expect(screen.queryByText('Hello!')).not.toBeInTheDocument();
 		jest.runAllTimers();
 		await componentPromise;
-		wrapper.update();
-		expect(wrapper.find('#some-component')).toHaveLength(1);
+		expect(screen.getByText('Hello!')).toBeInTheDocument();
+
+		jest.useRealTimers();
 	});
 });
