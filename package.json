@@ -10,6 +10,7 @@
 	},
 	"module": "AsyncComponent.es.js",
 	"main": "AsyncComponent.cjs.js",
+	"sideEffects": false,
 	"scripts": {
 		"lint": "eslint \"*.js\"",
 		"test": "jest",
