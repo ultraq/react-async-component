@@ -17,8 +17,13 @@
 /* eslint-env jest */
 import AsyncComponent from './AsyncComponent.js';
 
-import React   from 'react';
-import {mount} from 'enzyme';
+import React              from 'react';
+import {configure, mount} from 'enzyme';
+import Adapter            from 'enzyme-adapter-react-16';
+
+configure({
+	adapter: new Adapter()
+});
 
 /**
  * Tests for the async component.
